@@ -199,7 +199,7 @@ class _HomeState extends State<Home> {
             ),
 
             DotsIndicator(dotsCount:_carouselImages.length==0?1:_carouselImages.length,
-            position:_dotPosition.toDouble() ,
+            position:_dotPosition ,
             decorator: DotsDecorator(
               activeColor: AppColors.deep_orange,
               color: AppColors.deep_orange.withOpacity(0.5),

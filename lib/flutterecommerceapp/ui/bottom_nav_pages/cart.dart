@@ -25,7 +25,7 @@ class _CartState extends State<Cart> {
          }
 
          return ListView.builder(
-           itemCount: snapshot.data!.docs.length
+           itemCount: snapshot.data?.docs.length??0
          ,itemBuilder:(_,index){
 
              DocumentSnapshot  documentSnapshot = snapshot.data!.docs[index];

@@ -28,15 +28,23 @@ class _CartState extends State<Cart> {
            itemCount: snapshot.data?.docs.length??0
          ,itemBuilder:(_,index){
 
-             DocumentSnapshot  documentSnapshot = snapshot.data!.docs[index];
+             DocumentSnapshot  _documentSnapshot = snapshot.data!.docs[index];
 
              return Card(
                elevation:5,
                child: ListTile(
-                 leading:Text( documentSnapshot['name'],style: TextStyle(color: Colors.black),),
-                 title: Text('\$ ${ documentSnapshot['price']}',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
+                 leading:Text( _documentSnapshot['name'],style: TextStyle(color: Colors.black),),
+                 title: Text('\$ ${ _documentSnapshot['price']}',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
                  trailing:
                  GestureDetector(
+                   onTap: (){
+                     
+                     FirebaseFirestore.instance.collection("users-cart-items")
+                         .doc(FirebaseAuth.instance.currentUser!.email)
+                         .collection("items")
+                         .doc(_documentSnapshot.id).delete();
+                     
+                   },
                    child: CircleAvatar(
                      child:Icon(Icons.remove_circle)
                    ),

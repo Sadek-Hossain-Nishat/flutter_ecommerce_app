@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_ecommerce_app/firebase_options.dart';
+import 'package:flutter_ecommerce_app/flutterecommerceapp/business-logic/counter.dart';
 import 'package:flutter_ecommerce_app/flutterecommerceapp/ui/splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 
 Future<void> main() async {
@@ -10,7 +12,15 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(FlutterEcommerceApp());
+  runApp(
+      MultiProvider(
+        providers: [
+
+          ChangeNotifierProvider(create: (_)=>Counter())
+
+        ],
+          child: FlutterEcommerceApp())
+  );
 }
 
 class FlutterEcommerceApp extends StatelessWidget {

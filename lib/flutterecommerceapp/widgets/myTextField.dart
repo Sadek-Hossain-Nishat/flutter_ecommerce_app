@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-Widget myTextField(String hintText,keyboardType,controller){
+Widget myTextField(String hintText, keyboardType,controller){
 
   return TextField(
 

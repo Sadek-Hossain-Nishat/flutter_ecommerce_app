@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_ecommerce_app/flutterecommerceapp/ui/registration_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 import '../const/AppColors.dart';
 import '../widgets/customButton.dart';
@@ -222,18 +223,18 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(context, MaterialPageRoute(builder: (_)=>BottomNavController()));
       }
       else{
-        // Fluttertoast.showToast(msg: "Something is wrong");
+        Fluttertoast.showToast(msg: "Something is wrong");
       }
 
 
     } on FirebaseAuthException catch(e){
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
-        // Fluttertoast.showToast(msg: "No user found for that email.");
+        Fluttertoast.showToast(msg: "No user found for that email.");
       } else if (e.code == 'wrong-password') {
 
         print('Wrong password provided for that user.');
-        // Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
+        Fluttertoast.showToast(msg: 'Wrong password provided for that user.');
       }
 
     }

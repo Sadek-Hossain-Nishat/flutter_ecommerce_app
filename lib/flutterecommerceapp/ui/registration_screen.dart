@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ecommerce_app/flutterecommerceapp/const/AppColors.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 import 'login_screen.dart';
@@ -234,15 +235,15 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         Navigator.push(context, MaterialPageRoute(builder: (context)=>UserForm()));
 
       }else{
-        // Fluttertoast.showToast(msg: 'Something is wrong');
+        Fluttertoast.showToast(msg: 'Something is wrong');
       }
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        // Fluttertoast.showToast(msg: 'The password provided is too weak.');
+        Fluttertoast.showToast(msg: 'The password provided is too weak.');
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        // Fluttertoast.showToast(msg: 'The account already exists for that email.');
+        Fluttertoast.showToast(msg: 'The account already exists for that email.');
         print('The account already exists for that email.');
       }
     } catch (e) {
